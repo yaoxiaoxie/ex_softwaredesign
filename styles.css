@@ -1,0 +1,111 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: url('gud.png') no-repeat center center fixed; /* 天空背景图片 */
+    background-size: cover;
+    height: 100vh;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.chapter-box, .section-box {
+    background-color: rgba(255, 255, 255, 0.7); /* 设置半透明背景 */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    opacity: 0.8; /* 初始透明度 */
+    margin-bottom: 20px;
+}
+
+
+
+
+.note-container {
+    width: 80%; /* 使内容占据 80% 的宽度 */
+    max-width: 900px; /* 最大宽度 */
+    background-color: rgba(255, 255, 255, 0.85); /* 半透明白色背景 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin: 0 auto; /* 水平居中 */
+    /* overflow-y: auto;
+    max-height: 80vh; 最大高度，防止内容过长 */
+}
+
+.note-content {
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 添加一个容器的 margin-bottom，以防止页面底部内容被切断 */
+.note-container {
+    margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .note-container {
+        width: 90%; /* 在小屏幕上更窄的宽度 */
+    }
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+
+.lesson-box {
+    background-color: rgba(255, 255, 255, 0.7); /* 设置半透明背景 */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    opacity: 0.8; /* 初始透明度 */
+    margin-bottom: 20px;
+}
+
+.lesson-box h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.lesson-box p {
+    color: #666;
+}
+
+.lesson-box:hover, .chapter-box:hover, .section-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    opacity: 1; /* 悬停时不透明 */
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+    width: 12px;  /* 滚动条的宽度 */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;  /* 滚动条背景设置为透明 */
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.3); /* 滚动条把手默认设置为半透明 */
+    border-radius: 10px;  /* 设置圆角 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 100, 100, 0.6); /* 滚动条把手在鼠标悬停时变得更明显 */
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: rgba(100, 100, 100, 0.8); /* 滚动条把手在点击时变得更加明显 */
+}

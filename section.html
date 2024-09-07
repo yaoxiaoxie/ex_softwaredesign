@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>要看哪一节呢</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="section-container">
+        <!-- 章节小节选项将通过 JavaScript 动态加载 -->
+    </div>
+
+    <script>
+        // 获取URL中的章节参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const chapter = urlParams.get('chapter');
+
+        // 定义各个章节及其小节
+        const sections = {
+            1: [
+                { id: 1, title: '1.1', description: '组件技术基础' },
+                { id: 2, title: '第二小节', description: '描述第一章的第二小节' }
+            ],
+            2: [
+                { id: 1, title: '2.1', description: 'web基础' },
+                { id: 2, title: '第二小节', description: '描述第二章的第二小节' }
+            ]
+        };
+
+        // 获取小节容器
+        const sectionContainer = document.getElementById('section-container');
+
+        // 根据章节显示小节
+        if (sections[chapter]) {
+            sections[chapter].forEach(section => {
+                const sectionBox = document.createElement('div');
+                sectionBox.className = 'section-box';
+                sectionBox.onclick = () => location.href = `note.html?c=${chapter}&s=${section.id}`;
+                sectionBox.innerHTML = `<h2>${section.title}</h2><p>${section.description}</p>`;
+                sectionContainer.appendChild(sectionBox);
+            });
+        } else {
+            sectionContainer.innerHTML = '<p>未找到相关小节</p>';
+        }
+    </script>
+</body>
+</html>

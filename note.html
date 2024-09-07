@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程笔记</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+</head>
+<body>
+    <div class="note-container">
+        <div class="note-content" id="content">Loading...</div>
+    </div>
+
+    <script>
+        // 获取URL中的章节和小节参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const chapter = urlParams.get('c');
+        const section = urlParams.get('s');
+
+        // 生成对应的 Markdown 文件路径
+        const markdownFile = `notes/c${chapter}_s${section}.md`;
+
+        // 加载并显示笔记内容
+        const converter = new showdown.Converter();
+        fetch(markdownFile)
+            .then(response => response.text())
+            .then(text => {
+                const html = converter.makeHtml(text);
+                document.getElementById('content').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error loading the markdown file:', error);
+                document.getElementById('content').innerText = 'Error loading note: ' + error.message;
+            });
+    </script>
+</body>
+</html>
